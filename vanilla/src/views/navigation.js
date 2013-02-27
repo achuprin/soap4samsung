@@ -1,5 +1,5 @@
 define(["backbone", "views/common"], function(Backbone, CommonViews) {
-    var NavItem = CommonViews.View.extend({
+    var NavItem = CommonViews.CompositeView.extend({
         name: "",
         tagName: "li",
 
@@ -8,13 +8,13 @@ define(["backbone", "views/common"], function(Backbone, CommonViews) {
         },
 
         focus: function(e) {
-            CommonViews.View.prototype.focus.call(this, arguments);
+            CommonViews.CompositeView.prototype.focus.call(this, arguments);
             this.onClick(e);
         }
     });
 
 
-    var NavBar = CommonViews.HorizontalView.extend({
+    var NavBar = CommonViews.CompositeView.extend({
         render: function() {
             var ul = $("<ul class='nav'/>");
             _.each(this.children, function(child) {

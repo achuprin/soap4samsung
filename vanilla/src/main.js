@@ -3,23 +3,25 @@
  * @param {Node} Widget
  * @param {Manager} FocusManager
  */
-var module = function($, Widget, FocusManager, tvshow, views) {
+var module = function($, Widget, FocusManager, tvshow, views, navigation) {
     $(function() {
-        //        var root = new Widget($("#root"));
-        //        var header = new Widget($("header"));
-        //        var main = new Widget($("#main"));
-        //        var footer = $("footer");
+        var root = new views.VerticalView($("#root"));
+        var header = new views.CompositeView($("header"));
+        var main = new views.CompositeView({el: $("#main")});
+        var footer = $("footer");
 
-        var navigation = new views.Navigation({el: $("#nav")});
-        var myNavItem = new views.NavItem({"name": "Мои сериалы"});
-        var allNavItem = new views.NavItem({"name": "Все сериалы"});
-        var settingNavItem = new views.NavItem({"name": "Настройки"});
+        root.insert(header).insert(main);
 
-        navigation.insert(myNavItem)
+        var navBar = new navigation.Navigation({el: $("#nav")});
+        var myNavItem = new navigation.NavItem({"name": "Мои сериалы"});
+        var allNavItem = new navigation.NavItem({"name": "Все сериалы"});
+        var settingNavItem = new navigation.NavItem({"name": "Настройки"});
+
+        header.insert(navBar);
+        navBar.insert(myNavItem)
             .insert(allNavItem)
             .insert(settingNavItem)
             .render();
-
 
         var focusManager = new FocusManager(myNavItem);
 
@@ -64,6 +66,7 @@ require(
         "node",
         "focus-manager",
         "models/tv-show",
+        "views/common",
         "views/navigation"
     ],
     module

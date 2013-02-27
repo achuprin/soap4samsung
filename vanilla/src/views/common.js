@@ -3,6 +3,7 @@ define(["backbone"], function(Backbone) {
         initialize: function() {
             this.parent = null;
             this.siblings = new Array(4);
+            this.children = [];
         },
 
         setParent: function(parent) {
@@ -13,16 +14,18 @@ define(["backbone"], function(Backbone) {
             var siblingView = this.siblings[direction];
 
             if (siblingView) {
-                if (siblingView.children) {
-                    if (siblingView.children.length !== 0) {
-                        return siblingView.children[0];
-                    }
-                }
-
-                return siblingView;
+                return siblingView.firstChild();
             } else if (this.parent) {
                 return this.parent.sibling(direction);
             }
+        },
+
+        firstChild: function() {
+            if (this.children.length !== 0) {
+                return this.children[0].firstChild();
+            }
+
+            return this;
         },
 
         connect: function(direction, view) {
@@ -37,25 +40,6 @@ define(["backbone"], function(Backbone) {
             view.siblings[oppositeDirection] = this;
 
             return this;
-        },
-
-        focus: function() {
-            this.$el.addClass("active")
-        },
-
-        blur: function() {
-            this.$el.removeClass("active");
-        },
-
-        onClick: function() {
-            console.log("click");
-        }
-    });
-
-    var CompositeView = View.extend({
-        initialize: function() {
-            View.prototype.initialize.call(this, arguments);
-            this.children = [];
         },
 
         connectionStrategy: function(nodes, newNode) {
@@ -74,13 +58,25 @@ define(["backbone"], function(Backbone) {
             this.children.push(view);
 
             return this;
+        },
+
+        focus: function() {
+            this.$el.addClass("active")
+        },
+
+        blur: function() {
+            this.$el.removeClass("active");
+        },
+
+        onClick: function() {
+            console.log("click");
         }
     });
 
     return {
-        "View": View,
-        "HorizontalView": CompositeView,
-        "VerticalView": CompositeView.extend({
+        "CompositeView": View,
+
+        "VerticalView": View.extend({
             "connectionStrategy": function(nodes, newNode) {
                 var lastNode = nodes[nodes.length - 1];
                 if (lastNode) {
