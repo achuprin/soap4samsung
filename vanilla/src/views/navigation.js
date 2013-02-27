@@ -4,7 +4,8 @@ define(["backbone", "views/common"], function(Backbone, CommonViews) {
         tagName: "li",
 
         render: function() {
-            return this.$el.html(_.template("<a href=''><%= name %></a>")(this.options));
+            this.$el.html(_.template("<a href=''><%= name %></a>")(this.options));
+            return this;
         },
 
         focus: function(e) {
@@ -18,7 +19,9 @@ define(["backbone", "views/common"], function(Backbone, CommonViews) {
         render: function() {
             var ul = $("<ul class='nav'/>");
             _.each(this.children, function(child) {
-                ul.append(child.render())
+                var li = $("<li/>");
+                child.setElement(li).render();
+                ul.append(li);
             });
             this.$el.append(ul);
 
