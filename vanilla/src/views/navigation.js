@@ -6,11 +6,6 @@ define(["backbone", "views/common"], function(Backbone, CommonViews) {
         render: function() {
             this.$el.html(_.template("<a href=''><%= name %></a>")(this.options));
             return this;
-        },
-
-        focus: function(e) {
-            CommonViews.CompositeView.prototype.focus.call(this, arguments);
-            this.onClick(e);
         }
     });
 

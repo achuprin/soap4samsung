@@ -1,9 +1,8 @@
 /**
  * @param {jQuery} $
- * @param {Node} Widget
  * @param {Manager} FocusManager
  */
-var module = function($, Widget, FocusManager, tvshow, views, TvShowViews, navigation) {
+var module = function($, FocusManager, tvshow, views, TvShowViews, navigation) {
     $(function() {
         var root = new views.VerticalView({el: $("#root")});
         var header = new views.CompositeView({el: $("header")});
@@ -96,7 +95,6 @@ require.config({
 require(
     [
         "jquery",
-        "node",
         "focus-manager",
         "models/tv-show",
         "views/common",
