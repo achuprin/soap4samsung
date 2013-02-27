@@ -3,10 +3,10 @@
  * @param {Node} Widget
  * @param {Manager} FocusManager
  */
-var module = function($, Widget, FocusManager, tvshow, views, navigation) {
+var module = function($, Widget, FocusManager, tvshow, views, TvShowViews, navigation) {
     $(function() {
-        var root = new views.VerticalView($("#root"));
-        var header = new views.CompositeView($("header"));
+        var root = new views.VerticalView({el: $("#root")});
+        var header = new views.CompositeView({el: $("header")});
         var main = new views.CompositeView({el: $("#main")});
         var footer = $("footer");
 
@@ -24,6 +24,39 @@ var module = function($, Widget, FocusManager, tvshow, views, navigation) {
             .render();
 
         var focusManager = new FocusManager(myNavItem);
+
+        var pp = new tvshow.Model({
+            "id": 1,
+            "name": "Private Practice",
+            "code": "pp"
+        });
+        var house = new tvshow.Model({
+            "id": 2,
+            "name": "House M.D.",
+            "code": "house"
+        });
+        var wire = new tvshow.Model({
+            "id": 3,
+            "name": "The Wire",
+            "code": "wire"
+        });
+        var misfits = new tvshow.Model({
+            "id": 4,
+            "name": "Msfits",
+            "code": "misfits"
+        });
+        var tvshows = new tvshow.Collection();
+        var tvShowsList = new TvShowViews.List({
+            "cols": 2,
+            "el": main.$el,
+            "collection": tvshows
+        });
+        tvShowsList.render();
+        tvshows.add(pp);
+        tvshows.add(house);
+        tvshows.add(wire);
+        tvshows.add(misfits);
+        main.insert(tvShowsList);
 
         $(document).keydown(function(e) {
             switch (e.keyCode) {
@@ -67,6 +100,7 @@ require(
         "focus-manager",
         "models/tv-show",
         "views/common",
+        "views/tv-show",
         "views/navigation"
     ],
     module

@@ -35,5 +35,15 @@ footer {
     }
 
 .active {
-    border: 1px solid red;
+    background: gray;
     }
+
+.tvshow-list {
+    overflow: hidden;
+    width: 350px;
+    }
+    .tvshow-list li {
+        float: left;
+        width: 150px;
+        height: 150px;
+        }

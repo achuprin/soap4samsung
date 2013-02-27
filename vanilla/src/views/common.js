@@ -43,9 +43,11 @@ define(["backbone"], function(Backbone) {
         },
 
         connectionStrategy: function(nodes, newNode) {
-            var lastNode = nodes[nodes.length - 1];
-            if (lastNode) {
-                lastNode.connect(2, newNode);
+            if (nodes.length !== 0) {
+                var lastNode = nodes[nodes.length - 1];
+                if (lastNode) {
+                    lastNode.connect(2, newNode);
+                }
             }
         },
 
@@ -81,6 +83,22 @@ define(["backbone"], function(Backbone) {
                 var lastNode = nodes[nodes.length - 1];
                 if (lastNode) {
                     lastNode.connect(3, newNode);
+                }
+            }
+        }),
+
+        "GridView": View.extend({
+            connectionStrategy: function(nodes, newNode) {
+                var lastNode = nodes[nodes.length - 1];
+                var cols = this.options.cols;
+
+                if (lastNode) {
+                    lastNode.connect(2, newNode);
+                }
+
+                if (nodes.length >= cols) {
+                    var upperNode = nodes[nodes.length - cols];
+                    upperNode.connect(3, newNode);
                 }
             }
         })

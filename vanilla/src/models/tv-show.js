@@ -5,7 +5,7 @@ define(["backbone"], function(Backbone) {
     });
 
     return {
-        "model": TVShow,
-        "collection": TVShows
+        "Model": TVShow,
+        "Collection": TVShows
     }
 });
