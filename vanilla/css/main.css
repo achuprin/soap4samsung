@@ -1,0 +1,35 @@
+.root {
+    position: relative;
+    background: #fbfbfb;
+    width: 1280px;
+    height: 720px;
+    border: 2px solid black;
+    margin: auto;
+    }
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: url("../img/top_bg2.gif")
+    }
+
+section {
+    position: absolute;
+    top: 70px;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    }
+
+footer {
+    position: absolute;
+    height: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    }
