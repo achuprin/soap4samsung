@@ -8,7 +8,6 @@ define(["backbone", "views/common"], function(Backbone, Views) {
         },
 
         render: function() {
-            console.log(this.model);
             this.$el.html(_.template("<div><%= attributes.name %></div>")(this.model));
             return this;
         }

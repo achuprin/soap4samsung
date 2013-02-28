@@ -2,7 +2,7 @@
  * @param {jQuery} $
  * @param {Manager} FocusManager
  */
-var module = function($, FocusManager, tvshow, views, TvShowViews, navigation) {
+var module = function($, FocusManager, api, tvshow, views, TvShowViews, navigation) {
     $(function() {
         var root = new views.VerticalView({el: $("#root")});
         var header = new views.CompositeView({el: $("header")});
@@ -24,38 +24,18 @@ var module = function($, FocusManager, tvshow, views, TvShowViews, navigation) {
 
         var focusManager = new FocusManager(myNavItem);
 
-        var pp = new tvshow.Model({
-            "id": 1,
-            "name": "Private Practice",
-            "code": "pp"
-        });
-        var house = new tvshow.Model({
-            "id": 2,
-            "name": "House M.D.",
-            "code": "house"
-        });
-        var wire = new tvshow.Model({
-            "id": 3,
-            "name": "The Wire",
-            "code": "wire"
-        });
-        var misfits = new tvshow.Model({
-            "id": 4,
-            "name": "Msfits",
-            "code": "misfits"
-        });
         var tvshows = new tvshow.Collection();
         var tvShowsList = new TvShowViews.List({
             "cols": 2,
             "el": main.$el,
             "collection": tvshows
         });
+
+//        tvshows.fetch();
         tvShowsList.render();
-        tvshows.add(pp);
-        tvshows.add(house);
-        tvshows.add(wire);
-        tvshows.add(misfits);
         main.insert(tvShowsList);
+
+        api.user.login("Chupa", "235707");
 
         $(document).keydown(function(e) {
             switch (e.keyCode) {
@@ -96,6 +76,7 @@ require(
     [
         "jquery",
         "focus-manager",
+        "api",
         "models/tv-show",
         "views/common",
         "views/tv-show",
