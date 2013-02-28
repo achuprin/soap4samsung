@@ -1,4 +1,4 @@
-define(["backbone"], function(Backbone) {
+define(["backbone", "focus-manager"], function(Backbone, focusManager) {
     var View = Backbone.View.extend({
         initialize: function() {
             this.parent = null;

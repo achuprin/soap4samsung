@@ -1,8 +1,8 @@
 /**
  * @param {jQuery} $
- * @param {Manager} FocusManager
+ * @param {Manager} focusManager
  */
-var module = function($, FocusManager, api, tvshow, views, TvShowViews, navigation) {
+var module = function($, focusManager, API, tvshow, views, TvShowViews, navigation) {
     $(function() {
         var root = new views.VerticalView({el: $("#root")});
         var header = new views.CompositeView({el: $("header")});
@@ -22,7 +22,7 @@ var module = function($, FocusManager, api, tvshow, views, TvShowViews, navigati
             .insert(settingNavItem)
             .render();
 
-        var focusManager = new FocusManager(myNavItem);
+        focusManager.focus(myNavItem);
 
         var tvshows = new tvshow.Collection();
         var tvShowsList = new TvShowViews.List({
@@ -31,11 +31,8 @@ var module = function($, FocusManager, api, tvshow, views, TvShowViews, navigati
             "collection": tvshows
         });
 
-//        tvshows.fetch();
-        tvShowsList.render();
-        main.insert(tvShowsList);
-
-        api.user.login("Chupa", "235707");
+        main.insert(tvShowsList.render());
+        tvshows.fetch();
 
         $(document).keydown(function(e) {
             switch (e.keyCode) {

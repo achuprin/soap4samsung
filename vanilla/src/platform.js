@@ -2,6 +2,7 @@ define(function() {
     var storageAdapter;
 
     if ('localStorage' in window) {
+        // Browser environment
         storageAdapter = {
             "get": function(key) {
                 return window.localStorage.getItem(key);
@@ -11,15 +12,19 @@ define(function() {
                 window.localStorage.setItem(key, value);
             }
         }
+    } else {
+        // TV environment
     }
 
     return {
-        "get": function(key) {
-            return storageAdapter.get(key)
-        },
+        "storage": {
+            "get": function(key) {
+                return storageAdapter.get(key)
+            },
 
-        "set": function(key, value) {
-            storageAdapter.set(key, value);
+            "set": function(key, value) {
+                storageAdapter.set(key, value);
+            }
         }
     };
 });

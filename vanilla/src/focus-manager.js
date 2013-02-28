@@ -1,19 +1,21 @@
 define(function() {
     /**
-     * @param {Node} start
+     * @param {Node} startView
      * @constructor
      * @class Manager
      */
-    var Manager = function(start) {
-        if (start === null) {
-            throw new Error("You should provide initial element to focus.")
+    var Manager = function(startView) {
+        if (startView) {
+            this.focus(startView);
         }
-
-        this.current = start;
-        this.current.focus();
     };
 
     Manager.prototype = {
+        focus: function(view) {
+            this.current = view;
+            this.current.focus();
+        },
+
         move: function(event) {
             var self = this;
             function next(event) {
@@ -44,5 +46,5 @@ define(function() {
         }
     };
 
-    return Manager;
+    return new Manager();
 });
