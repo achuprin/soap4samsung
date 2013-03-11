@@ -1,5 +1,6 @@
-var module = function($, Backbone, views, navController) {
+var module = function($, Backbone, views) {
     var router = require("router");
+    var body = $("body");
 
     var app = {
         createNavigation: function() {
@@ -15,10 +16,9 @@ var module = function($, Backbone, views, navController) {
         start: function() {
             var appView = new views.App();
 
-            $("body").html(appView.render().$el);
+            body.html(appView.render().$el);
             appView.setHeader(this.createNavigation());
 
-            navController.focus(appView);
             Backbone.history.start();
             router.navigate(router.routes.my, {trigger: true});
         }

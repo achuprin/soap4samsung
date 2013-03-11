@@ -15,7 +15,7 @@ define(["views/common"], function(views) {
                     e.preventDefault();
                     break;
                 case 13:
-                    self.select(e);
+                    self.select(self.current);
                     e.preventDefault();
                     break;
             }
@@ -54,14 +54,14 @@ define(["views/common"], function(views) {
             }
         },
 
-        select: function(event) {
+        select: function(view) {
             if (this.selected) {
                 this.selected.unselect();
             }
 
+            this.focus(view);
             this.selected = this.current;
-            this.current.onClick(event);
-            this.focus(this.selected);
+            this.selected.onClick(event);
         }
     };
 
