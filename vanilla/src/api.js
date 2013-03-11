@@ -1,4 +1,4 @@
-define(["platform", "main"], function(platform, main) {
+define(["platform", "main", "router"], function(platform, main, router) {
     var storage = platform.storage;
 
     var endpoint = "/soap4me";
@@ -29,7 +29,7 @@ define(["platform", "main"], function(platform, main) {
                             return method.call(api.shows, args);
                         });
                 } else {
-                    console.log("shoul show login window");
+                    router.navigate("login");
                 }
             }
 

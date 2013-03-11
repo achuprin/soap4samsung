@@ -54,3 +54,6 @@ footer {
     right: 0;
     background: rgba(0, 0, 0, 0.7);
     }
+.selected a {
+    background: red;
+    }

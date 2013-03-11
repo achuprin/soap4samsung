@@ -1,4 +1,11 @@
-define(["backbone", "focus-manager"], function(Backbone, focusManager) {
+define(["backbone"], function(Backbone) {
+    var direction = {
+        LEFT: 0,
+        TOP: 1,
+        RIGHT: 2,
+        BOTTOM: 3
+    };
+
     var View = Backbone.View.extend({
         initialize: function() {
             this.parent = null;
@@ -46,14 +53,11 @@ define(["backbone", "focus-manager"], function(Backbone, focusManager) {
             if (nodes.length !== 0) {
                 var lastNode = nodes[nodes.length - 1];
                 if (lastNode) {
-                    lastNode.connect(2, newNode);
+                    lastNode.connect(direction.RIGHT, newNode);
                 }
             }
         },
 
-        /**
-         * @param {View} view
-         */
         insert: function(view) {
             this.connectionStrategy.call(this, this.children, view);
             view.setParent(this);
@@ -70,19 +74,25 @@ define(["backbone", "focus-manager"], function(Backbone, focusManager) {
             this.$el.removeClass("active");
         },
 
-        onClick: function() {
-            console.log("click");
+        unselect: function() {
+            this.$el.removeClass("selected");
+        },
+
+        onClick: function(event) {
+            this.$el.addClass("selected");
         }
     });
 
     return {
+        "directions": direction,
+
         "CompositeView": View,
 
         "VerticalView": View.extend({
             "connectionStrategy": function(nodes, newNode) {
                 var lastNode = nodes[nodes.length - 1];
                 if (lastNode) {
-                    lastNode.connect(3, newNode);
+                    lastNode.connect(direction.BOTTOM, newNode);
                 }
             }
         }),
