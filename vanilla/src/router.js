@@ -1,4 +1,4 @@
-define(["backbone"], function(Backbone) {
+define(["backbone", "main", "views/login"], function(Backbone, app, LoginView) {
     var Router = Backbone.Router.extend({
         routes: {
             "my": "my",
@@ -8,11 +8,11 @@ define(["backbone"], function(Backbone) {
         },
 
         my: function() {
-            console.log("here");
         },
 
         login: function() {
-            alert('login');
+//            var body = $("body");
+//            app.view.append(new LoginView());
         }
     });
 

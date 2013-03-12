@@ -1,34 +1,3 @@
-var module = function($, Backbone, views) {
-    var router = require("router");
-    var body = $("body");
-
-    var app = {
-        createNavigation: function() {
-            var navBar = new views.navigation.Navigation();
-
-            navBar.add(router.routes.my, "Мои сериалы")
-                .add(router.routes.all, "Все сериалы")
-                .add(router.routes.settings, "Настройки");
-
-            return navBar;
-        },
-
-        start: function() {
-            var appView = new views.App();
-
-            body.html(appView.render().$el);
-            appView.setHeader(this.createNavigation());
-
-            Backbone.history.start();
-            router.navigate(router.routes.my, {trigger: true});
-        }
-    };
-
-    $(function() {
-        app.start();
-    });
-};
-
 require.config({
     paths: {
         'underscore': '../lib/underscore',
@@ -45,12 +14,12 @@ require.config({
     }
 });
 
-require(
-    [
-        "jquery",
-        "backbone",
-        "views",
-        "nav-manager"
-    ],
-    module
-);
+require(["jquery", "backbone", "app"], function($, Backbone, app) {
+    Backbone.history.start();
+
+    $(function() {
+        app.start();
+    });
+
+    return app;
+});

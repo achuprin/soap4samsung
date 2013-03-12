@@ -1,4 +1,4 @@
-define(["platform", "main", "router"], function(platform, main, router) {
+define(["platform", "exceptions"], function(platform, exceptions) {
     var storage = platform.storage;
 
     var endpoint = "/soap4me";
@@ -29,7 +29,7 @@ define(["platform", "main", "router"], function(platform, main, router) {
                             return method.call(api.shows, args);
                         });
                 } else {
-                    router.navigate("login");
+                    throw new exceptions.NotLogginedException();
                 }
             }
 

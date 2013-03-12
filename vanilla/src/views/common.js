@@ -58,6 +58,16 @@ define(["backbone"], function(Backbone) {
             }
         },
 
+        html: function(view) {
+            this.insert(view);
+            this.$el.html(view.render().$el);
+        },
+
+        append: function(view) {
+            this.insert(view);
+            this.$el.append(view.render().$el);
+        },
+
         insert: function(view) {
             this.connectionStrategy.call(this, this.children, view);
             view.setParent(this);
@@ -67,11 +77,11 @@ define(["backbone"], function(Backbone) {
         },
 
         focus: function() {
-            this.$el.addClass("active")
+            this.$el.addClass("active").focus();
         },
 
         blur: function() {
-            this.$el.removeClass("active");
+            this.$el.removeClass("active").blur();
         },
 
         unselect: function() {

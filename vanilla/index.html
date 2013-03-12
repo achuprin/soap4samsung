@@ -11,6 +11,7 @@
     <script data-main="src/main" src="lib/require-jquery.js"></script>
 </head>
 <body>
+<div id="root" class="root"></div>
 <script type="text/html" id="template-header">
     <!--suppress HtmlUnknownTag -->
     <div class="header">
@@ -21,6 +22,33 @@
                     <div class="header-content"></div>
                 </div>
             </div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="template-login">
+    <!--suppress HtmlUnknownTag -->
+    <div class="modal">
+        <div class="modal-header">
+            <h3>Логин</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="username">Имя пользователя:</label>
+                    <div class="controls">
+                        <input type="text" id="username">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="password">Пароль</label>
+                    <div class="controls">
+                        <input type="password" id="password">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#" id="submit" class="btn btn-primary">Войти</a>
         </div>
     </div>
 </script>

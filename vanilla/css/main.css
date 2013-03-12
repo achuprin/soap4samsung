@@ -46,7 +46,7 @@ footer {
         width: 150px;
         height: 150px;
         }
-.fullscreen {
+.fullscreen-view {
     position: fixed;
     left: 0;
     top: 0;
@@ -54,6 +54,7 @@ footer {
     right: 0;
     background: rgba(0, 0, 0, 0.7);
     }
+
 .selected a {
     background: red;
     }
