@@ -12,7 +12,7 @@ define(["views", "api", "exceptions", "router"], function(views, api, exceptions
         },
 
         start: function() {
-            var appView = this.view = new views.App();
+            var appView = this.view = views.App;
 
             body.html(appView.render().$el);
             appView.setHeader(this.createNavigation());
@@ -20,7 +20,6 @@ define(["views", "api", "exceptions", "router"], function(views, api, exceptions
             try {
                 // Показываем главный раздел "Мои сериалы"
                 router.navigate(router.routes.my, {trigger: true});
-                api.shows.all();
             } catch (e) {
                 if (e instanceof exceptions.NotLogginedException) {
                     router.navigate(router.routes.login, {trigger: true});

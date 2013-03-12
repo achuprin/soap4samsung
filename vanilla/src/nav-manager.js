@@ -1,4 +1,4 @@
-define(["views/common"], function(views) {
+define(function() {
     /**
      * @constructor
      * @class Manager
@@ -36,13 +36,13 @@ define(["views/common"], function(views) {
             function next(event) {
                 switch (event.keyCode) {
                     case 37:
-                        return self.current.sibling(views.directions.LEFT);
+                        return self.current.sibling(0);
                     case 38:
-                        return self.current.sibling(views.directions.TOP);
+                        return self.current.sibling(1);
                     case 39:
-                        return self.current.sibling(views.directions.RIGHT);
+                        return self.current.sibling(2);
                     case 40:
-                        return self.current.sibling(views.directions.BOTTOM);
+                        return self.current.sibling(3);
                     default:
                         return null;
                 }

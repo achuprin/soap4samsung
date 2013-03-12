@@ -36,11 +36,19 @@ define(["backbone", "api", "views/common", "nav-manager"], function(Backbone, ap
 
         submit: function(e) {
             var self = this;
-            var username = this.username.$el.value();
-            var password = this.password.$el.value();
+            var username = this.username.$el.val();
+            var password = this.password.$el.val();
+            var error = $("#login-error", self.$el);
 
-            api.user.login(username, password).done(function() {
-                self.$el.hide();
+            error.hide();
+            api.user.login(username, password).done(function(data) {
+                if (data["ok"] == 0) {
+                    navManager.focus(self.username);
+                    error.show();
+                } else {
+                    self.remove();
+                    window.history.back();
+                }
             });
 
             return false;

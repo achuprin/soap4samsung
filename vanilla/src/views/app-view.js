@@ -1,9 +1,14 @@
 define(["views/common"], function(CommonViews) {
-    return CommonViews.VerticalView.extend({
+    var AppView = CommonViews.VerticalView.extend({
         id: "root",
         className: "root",
         header: _.template($("#template-header").html()),
         content: $("<div/>").addClass("content"),
+
+        initialize: function() {
+            CommonViews.VerticalView.prototype.initialize.call(this, arguments);
+            console.log("initialize AppView");
+        },
 
         setHeader: function(view) {
             $(".header-content").html(view.render().$el);
@@ -20,4 +25,6 @@ define(["views/common"], function(CommonViews) {
             return this;
         }
     });
+
+    return new AppView();
 });

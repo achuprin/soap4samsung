@@ -1,5 +1,5 @@
 var imports = [
-    "views/app",
+    "views/app-view",
     "views/common",
     "views/navigation"
 ];

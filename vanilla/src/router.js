@@ -1,4 +1,4 @@
-define(["backbone", "main", "views/login"], function(Backbone, app, LoginView) {
+define(["backbone", "api", "views/app-view", "views/login"], function(Backbone, api, AppView, LoginView) {
     var Router = Backbone.Router.extend({
         routes: {
             "my": "my",
@@ -8,11 +8,12 @@ define(["backbone", "main", "views/login"], function(Backbone, app, LoginView) {
         },
 
         my: function() {
+            console.log("Dispatching #my");
+            api.shows.all();
         },
 
         login: function() {
-//            var body = $("body");
-//            app.view.append(new LoginView());
+            AppView.append(new LoginView());
         }
     });
 

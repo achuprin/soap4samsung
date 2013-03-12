@@ -1,4 +1,4 @@
-define(["backbone"], function(Backbone) {
+define(["backbone", "../nav-manager"], function(Backbone, navManager) {
     var direction = {
         LEFT: 0,
         TOP: 1,
@@ -90,12 +90,18 @@ define(["backbone"], function(Backbone) {
 
         onClick: function(event) {
             this.$el.addClass("selected");
+        },
+
+        remove: function() {
+            Backbone.View.prototype.remove.call(this, arguments);
+            navManager.focus(this.parent);
+            _.each(this.children, function(child) {
+                child.remove()
+            });
         }
     });
 
     return {
-        "directions": direction,
-
         "CompositeView": View,
 
         "VerticalView": View.extend({
