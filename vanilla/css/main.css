@@ -6,60 +6,28 @@
     margin: auto;
     }
 
-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background: url("../img/top_bg2.gif")
+/* Header */
+/* ------------------------------------------------------------- */
+.header .navbar {
+    background: url("../img/top_bg2.gif") #f0f0f0 0 100% repeat-x;
+    padding-bottom: 2px;
     }
-
-section {
-    position: absolute;
-    top: 70px;
-    bottom: 60px;
-    left: 0;
-    right: 0;
-    }
-
-footer {
-    position: absolute;
-    height: 40px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.4);
-    }
-
-.active {
-    background: gray;
-    }
-
-.tvshow-list {
-    overflow: hidden;
-    margin: 0;
-    }
-    .tvshow-list li {
-        float: left;
-        width: 160px;
-        height: 160px;
+    .header .navbar .nav li {
+        line-height: 30px;
         }
-    .tvshow-list li.active {
-        position: relative;
-        margin: -2px;
-        border: 2px solid red;
+        .header .navbar .nav li a {
+            padding-left: 20px;
+            padding-right: 20px;
+            }
+    .header .navbar .brand {
+        line-height: 30px;
         }
-.fullscreen-view {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.7);
+.header .navbar-inner {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    background: none;
     }
-
-.selected a {
-    background: red;
+.header .navbar-search {
+    margin-top: 10px;
     }
