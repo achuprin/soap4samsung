@@ -1,4 +1,4 @@
-define(["backbone", "api", "views/app-view", "views/login"], function(Backbone, api, AppView, LoginView) {
+define(["backbone", "api", "nav-manager", "views/app-view", "views/login", "views/tv-show", "models/tv-show"], function(Backbone, api, navManager, AppView, LoginView, tvshows, tvshowmodels) {
     var Router = Backbone.Router.extend({
         routes: {
             "my": "my",
@@ -9,7 +9,14 @@ define(["backbone", "api", "views/app-view", "views/login"], function(Backbone, 
 
         my: function() {
             console.log("Dispatching #my");
-            api.shows.all();
+            var shows = new tvshowmodels.Collection();
+            var view = new tvshows.List({
+                collection: shows,
+                cols: 8
+            });
+            AppView.setContent(view);
+            shows.fetch();
+            navManager.focus(view);
         },
 
         login: function() {

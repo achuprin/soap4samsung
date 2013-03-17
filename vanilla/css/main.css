@@ -39,12 +39,17 @@ footer {
 
 .tvshow-list {
     overflow: hidden;
-    width: 350px;
+    margin: 0;
     }
     .tvshow-list li {
         float: left;
-        width: 150px;
-        height: 150px;
+        width: 160px;
+        height: 160px;
+        }
+    .tvshow-list li.active {
+        position: relative;
+        margin: -2px;
+        border: 2px solid red;
         }
 .fullscreen-view {
     position: fixed;
