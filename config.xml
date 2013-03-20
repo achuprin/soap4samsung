@@ -9,7 +9,7 @@
     <BigListIcon>icon/sampleIcon_95_78.png</BigListIcon>
     <category></category>
     <autoUpdate>n</autoUpdate>
-    <ver>0.100</ver>
+    <ver>0.1</ver>
     <mgrver></mgrver>
     <fullwidget>y</fullwidget>
     <type>user</type>
@@ -18,14 +18,14 @@
     <childlock>n</childlock>
     <videomute>n</videomute>
     <dcont>y</dcont>
-    <widgetname>Soap4Samsung</widgetname>
+    <widgetname>soap4.me</widgetname>
     <description></description>
     <width>1280</width>
     <height>720</height>
     <author>
-        <name></name>
-        <email></email>
-        <link></link>
-        <organization></organization>
+        <name>Alexander Chuprin</name>
+        <email>achuprin@me.com</email>
+        <link>http://perfectum.in</link>
+        <organization>Perfectum</organization>
     </author>
 </widget>

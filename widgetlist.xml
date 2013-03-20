@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsp stat="ok">
+    <list>
+        <widget id="soap4me">
+            <title>soap4.me</title>
+            <compression size="3383543" type="zip"/>
+            <description>soap4.me Smart TV Application</description>
+            <download>http://192.168.1.78/deploy/soap4samsung.zip</download>
+        </widget>
+    </list>
+</rsp>

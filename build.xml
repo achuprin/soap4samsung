@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<project name="soap4samsung" default="package" basedir=".">
+    <target name="package">
+        <zip destfile="deploy/soap4samsung.zip">
+            <zipfileset dir="app" prefix="app"/>
+            <zipfileset dir="." includes="app.json, config.xml, index.html, widget.info"/>
+        </zip>
+    </target>
+</project>
