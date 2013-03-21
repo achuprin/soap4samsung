@@ -8,6 +8,7 @@ html, body {
     max-width: 1280px;
     max-height: 720px;
     margin: auto;
+    font-size: 21px;
     }
 
 /* Header */
@@ -155,4 +156,9 @@ html, body {
 .helpbar-item-revff {
     padding-left: 56px;
     background-image: url("../img/icon_help/help_ff_rew.png");
+    }
+
+.overlay-info {
+    padding: 20px;
+    color: #fff;
     }
