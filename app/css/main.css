@@ -152,3 +152,7 @@ html, body {
 .helpbar-item-enter {
     background-image: url("../img/icon_help/help_enter.png");
     }
+.helpbar-item-revff {
+    padding-left: 56px;
+    background-image: url("../img/icon_help/help_ff_rew.png");
+    }
