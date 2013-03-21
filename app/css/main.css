@@ -1,8 +1,12 @@
+html, body {
+    height: 100%;
+    }
 .root {
     position: relative;
     background: #fbfbfb;
-    width: 1280px;
-    height: 720px;
+    height: 100%;
+    max-width: 1280px;
+    max-height: 720px;
     margin: auto;
     }
 
@@ -35,21 +39,29 @@
 /* Content */
 /* ------------------------------------------------------------- */
 #content {
-    position: relative;
+    position: absolute;
+    display: inline-block;
     max-height: 670px;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
     overflow: auto;
     padding: 20px;
     }
 
+.shows-list {
+    padding: 10px;
+    }
 .shows-list ul {
-    margin: 0 0 0 -20px;
+    margin: -20px -20px 0 -30px;
     overflow: hidden;
     }
     .shows-list ul li {
         position: relative;
         list-style: none;
         float: left;
-        margin: 0 0 10px 20px;
+        margin: 10px 0 0 20px;
         width: 190px;
         }
         .shows-list ul li a {
@@ -91,8 +103,52 @@
 /* ------------------------------------------------------------- */
 #footer.navbar-fixed-bottom {
     position: absolute;
+    bottom: 0;
     }
 #footer.navbar-inverse .navbar-inner {
     background: rgba(27, 27, 27, 0.6);
     border: 0;
+    }
+
+.helpbar {
+    margin: 0;
+    padding: 10px 20px;
+    }
+    .helpbar li {
+        list-style-type: none;
+        display: inline-block;
+        }
+        .helpbar-item:hover {
+            color: #fff;
+            text-decoration: none;
+            }
+        .helpbar-item {
+            display: inline-block;
+            padding: 0 0 0 30px;
+            margin: 0 0 0 30px;
+            background-repeat: no-repeat;
+            background-position: 0 50%;
+            line-height: 26px;
+            color: #fff;
+            }
+.helpbar-item-a {
+    background-image: url("../img/icon_help/icon_box_r.png");
+    }
+.helpbar-item-b {
+    background-image: url("../img/icon_help/icon_box_g.png");
+    }
+.helpbar-item-c {
+    background-image: url("../img/icon_help/icon_box_y.png");
+    }
+.helpbar-item-d {
+    background-image: url("../img/icon_help/icon_box_b.png");
+    }
+.helpbar-item-info {
+    background-image: url("../img/icon_help/help_icon_info.png");
+    }
+.helpbar-item-return {
+    background-image: url("../img/icon_help/help_return_icon.png");
+    }
+.helpbar-item-enter {
+    background-image: url("../img/icon_help/help_enter.png");
     }
