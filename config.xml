@@ -3,10 +3,10 @@
     <cpname></cpname>
     <cplogo></cplogo>
     <cpauthjs></cpauthjs>
-    <ThumbIcon>icon/sampleIcon_106_87.png</ThumbIcon>
-    <BigThumbIcon>icon/sampleIcon_115_95.png</BigThumbIcon>
-    <ListIcon>icon/sampleIcon_85_70.png</ListIcon>
-    <BigListIcon>icon/sampleIcon_95_78.png</BigListIcon>
+    <ThumbIcon>icon/ThumbIcon.png</ThumbIcon>
+    <BigThumbIcon>icon/BigThumbIcon.png</BigThumbIcon>
+    <ListIcon>icon/ListIcon.png</ListIcon>
+    <BigListIcon>icon/BigListIcon.png</BigListIcon>
     <category></category>
     <autoUpdate>n</autoUpdate>
     <ver>0.1</ver>

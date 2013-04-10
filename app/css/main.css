@@ -18,14 +18,15 @@ html, body {
     padding-bottom: 2px;
     }
     #header.navbar .nav li {
-        line-height: 30px;
+        line-height: 40px;
+        font-style: 32px;
         }
         #header.navbar .nav li a {
             padding-left: 20px;
             padding-right: 20px;
             }
     #header.navbar .brand {
-        line-height: 30px;
+        line-height: 40px;
         }
 #header .navbar-inner {
     -webkit-box-shadow: none;
@@ -36,6 +37,12 @@ html, body {
 #header .navbar-search {
     margin-top: 10px;
     }
+    #header .navbar-search .search-query {
+        padding: 9px 16px;
+        line-height: 23px;
+        border-radius: 21px;
+        font-size: 18px;
+        }
 
 /* Content */
 /* ------------------------------------------------------------- */
@@ -43,7 +50,7 @@ html, body {
     position: absolute;
     display: inline-block;
     max-height: 670px;
-    top: 50px;
+    top: 60px;
     left: 0;
     right: 0;
     bottom: 0;
