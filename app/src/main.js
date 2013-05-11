@@ -15,10 +15,9 @@ require.config({
 });
 
 require(["jquery", "backbone", "app"], function($, Backbone, app) {
-
     $(function() {
-        app.start();
         Backbone.history.start();
+        app.start();
     });
 
     return app;

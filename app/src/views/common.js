@@ -66,6 +66,8 @@ define(["backbone", "../nav-manager"], function(Backbone, navManager) {
         append: function(view) {
             this.insert(view);
             this.$el.append(view.render().$el);
+
+            return this;
         },
 
         insert: function(view) {

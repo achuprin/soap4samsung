@@ -14,12 +14,18 @@
 <script type="text/html" id="template-header">
     <!--suppress HtmlUnknownTag -->
     <div class="header">
-        <div class="navbar">
+        <div id="header" class="navbar navbar-static-top">
             <div class="navbar-inner">
-                <div class="container">
-                    <a class="brand" href="#">soap4.me</a>
-                    <div class="header-content"></div>
-                </div>
+                <!-- Логотип -->
+                <a class="brand pull-left" href="#">soap4.me</a>
+
+                <!-- Навигация -->
+                <div class="header-content pull-left"></div>
+
+                <!-- Поиск -->
+                <form class="navbar-search pull-right">
+                    <input type="text" class="search-query" placeholder="Поиск"/>
+                </form>
             </div>
         </div>
     </div>

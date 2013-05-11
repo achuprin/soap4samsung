@@ -8,11 +8,13 @@ define(["backbone", "views/common", "router", "nav-manager"], function(Backbone,
             var view = this;
 
             router.on("route:" + this.options.url, function() {
+                console.log("Selecting menu item", view);
                 navManager.select(view);
             })
         },
 
         onClick: function(event) {
+            console.log("Nav item clicked", this);
             CommonViews.CompositeView.prototype.onClick.apply(this, arguments);
             router.navigate(this.options.url, {trigger: true});
         },

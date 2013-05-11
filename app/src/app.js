@@ -18,16 +18,8 @@ define(["views", "api", "exceptions", "router"], function(views, api, exceptions
             body.html(appView.render().$el);
             appView.setHeader(createNavigation());
 
-            try {
-                // Показываем главный раздел "Мои сериалы"
-                router.navigate(router.routes.my, {trigger: true});
-            } catch (e) {
-                if (e instanceof exceptions.NotLogginedException) {
-                    router.navigate(router.routes.login, {trigger: true});
-                } else {
-                    throw e;
-                }
-            }
+            // Показываем главный раздел "Мои сериалы"
+            router.navigate(router.routes.my, {trigger: true});
         }
     };
 });

@@ -7,7 +7,7 @@ define(["views/common"], function(CommonViews) {
 
         initialize: function() {
             CommonViews.VerticalView.prototype.initialize.call(this, arguments);
-            console.log("initialize AppView");
+            console.log("Initialize AppView");
         },
 
         setHeader: function(view) {
