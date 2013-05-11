@@ -24,11 +24,14 @@ define(function() {
 
     Manager.prototype = {
         focus: function(view) {
+            var self = this;
             if (this.current) {
                 this.current.blur();
             }
             this.current = view.firstChild();
-            this.current.focus();
+            setTimeout(function(){
+                self.current.$el.focus();
+            }, 0)
         },
 
         move: function(event) {
