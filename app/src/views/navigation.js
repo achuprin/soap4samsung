@@ -8,6 +8,7 @@ define(["backbone", "views/common", "router", "nav-manager"], function(Backbone,
             var view = this;
 
             router.on("route:" + this.options.url, function() {
+                // TODO: добавить выделение активного пункта при создании, а не только при сменен урла
                 console.log("Selecting menu item", view);
                 navManager.select(view);
             })

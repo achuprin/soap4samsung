@@ -1,6 +1,7 @@
 html, body {
     height: 100%;
     }
+
 .root {
     position: relative;
     background: #fbfbfb;
@@ -10,6 +11,7 @@ html, body {
     margin: auto;
     font-size: 21px;
     }
+
 .fullscreen-view {
     position: absolute;
     left: 0;
@@ -18,38 +20,54 @@ html, body {
     right: 0;
     background: rgba(0, 0, 0, 0.7);
     }
+
+.navbar .nav > .selected > a, .navbar .nav > .selected > a:hover, .navbar .nav > .selected > a:focus {
+    color: #555555;
+    text-decoration: none;
+    background-color: #e5e5e5;
+    -webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
+    -moz-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
+    }
+
 /* Header */
 /* ------------------------------------------------------------- */
 #header.navbar {
     background: url("../img/top_bg2.gif") #f0f0f0 0 100% repeat-x;
     padding-bottom: 2px;
     }
-    #header.navbar .nav li {
-        line-height: 40px;
-        font-style: 32px;
-        }
-        #header.navbar .nav li a {
-            padding-left: 20px;
-            padding-right: 20px;
-            }
-    #header.navbar .brand {
-        line-height: 40px;
-        }
+
+#header.navbar .nav li {
+    line-height: 40px;
+    font-style: 32px;
+    }
+
+#header.navbar .nav li a {
+    padding-left: 20px;
+    padding-right: 20px;
+    }
+
+#header.navbar .brand {
+    line-height: 40px;
+    }
+
 #header .navbar-inner {
     -webkit-box-shadow: none;
     box-shadow: none;
     border: none;
     background: none;
     }
+
 #header .navbar-search {
     margin-top: 10px;
     }
-    #header .navbar-search .search-query {
-        padding: 9px 16px;
-        line-height: 23px;
-        border-radius: 21px;
-        font-size: 18px;
-        }
+
+#header .navbar-search .search-query {
+    padding: 9px 16px;
+    line-height: 23px;
+    border-radius: 21px;
+    font-size: 18px;
+    }
 
 /* Content */
 /* ------------------------------------------------------------- */
@@ -68,51 +86,60 @@ html, body {
 .shows-list {
     padding: 10px;
     }
+
 .shows-list ul {
     margin: -20px -20px 0 -30px;
     overflow: hidden;
     }
-    .shows-list ul li {
-        position: relative;
-        list-style: none;
-        float: left;
-        margin: 10px 0 0 20px;
-        width: 190px;
-        }
-        .shows-list ul li a {
-            display: block;
-            }
-        .shows-list ul li.active a, .shows-list ul li:hover a {
-            /*margin: -10px;*/
-            /*padding: 10px;*/
-            /*background: #000;*/
-            /*box-shadow: 0px 2px 11px rgba(82, 168, 236, 1);*/
-            }
-        .shows-list ul li a:hover {
-            text-decoration: none;
-            }
-        .shows-list ul li .poster {
-            width: 100%;
-            height: 190px;
-            box-shadow: rgba(0,0,0,0.4) 0 1px 5px;
-            }
-        .shows-list ul li:hover .poster, .shows-list ul li.active .poster {
-            box-shadow: 0px 2px 11px rgba(82, 168, 236, 1);
-            }
-    .shows-list .name {
-        display: block;
-        white-space: nowrap;
-        width: 100%;
-        overflow: hidden;
-        padding: 5px 0 0 0;
-        font-size: 0.9em;
-        text-align: center;
-        color: #000;
-        text-shadow: 0 1px 0 #ffffff;
-        }
-    .shows-list .new {
-        position: absolute;
-        }
+
+.shows-list ul li {
+    position: relative;
+    list-style: none;
+    float: left;
+    margin: 10px 0 0 20px;
+    width: 190px;
+    }
+
+.shows-list ul li a {
+    display: block;
+    }
+
+.shows-list ul li.active a, .shows-list ul li:hover a {
+    /*margin: -10px;*/
+    /*padding: 10px;*/
+    /*background: #000;*/
+    /*box-shadow: 0px 2px 11px rgba(82, 168, 236, 1);*/
+    }
+
+.shows-list ul li a:hover {
+    text-decoration: none;
+    }
+
+.shows-list ul li .poster {
+    width: 100%;
+    height: 190px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0 1px 5px;
+    }
+
+.shows-list ul li:hover .poster, .shows-list ul li.active .poster {
+    box-shadow: 0px 2px 11px rgba(82, 168, 236, 1);
+    }
+
+.shows-list .name {
+    display: block;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    padding: 5px 0 0 0;
+    font-size: 0.9em;
+    text-align: center;
+    color: #000;
+    text-shadow: 0 1px 0 #ffffff;
+    }
+
+.shows-list .new {
+    position: absolute;
+    }
 
 /* Footer (controls) */
 /* ------------------------------------------------------------- */
@@ -120,6 +147,7 @@ html, body {
     position: absolute;
     bottom: 0;
     }
+
 #footer.navbar-inverse .navbar-inner {
     background: rgba(27, 27, 27, 0.6);
     border: 0;
@@ -129,44 +157,55 @@ html, body {
     margin: 0;
     padding: 10px 20px;
     }
-    .helpbar li {
-        list-style-type: none;
-        display: inline-block;
-        }
-        .helpbar-item:hover {
-            color: #fff;
-            text-decoration: none;
-            }
-        .helpbar-item {
-            display: inline-block;
-            padding: 0 0 0 30px;
-            margin: 0 0 0 30px;
-            background-repeat: no-repeat;
-            background-position: 0 50%;
-            line-height: 26px;
-            color: #fff;
-            }
+
+.helpbar li {
+    list-style-type: none;
+    display: inline-block;
+    }
+
+.helpbar-item:hover {
+    color: #fff;
+    text-decoration: none;
+    }
+
+.helpbar-item {
+    display: inline-block;
+    padding: 0 0 0 30px;
+    margin: 0 0 0 30px;
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+    line-height: 26px;
+    color: #fff;
+    }
+
 .helpbar-item-a {
     background-image: url("../img/icon_help/icon_box_r.png");
     }
+
 .helpbar-item-b {
     background-image: url("../img/icon_help/icon_box_g.png");
     }
+
 .helpbar-item-c {
     background-image: url("../img/icon_help/icon_box_y.png");
     }
+
 .helpbar-item-d {
     background-image: url("../img/icon_help/icon_box_b.png");
     }
+
 .helpbar-item-info {
     background-image: url("../img/icon_help/help_icon_info.png");
     }
+
 .helpbar-item-return {
     background-image: url("../img/icon_help/help_return_icon.png");
     }
+
 .helpbar-item-enter {
     background-image: url("../img/icon_help/help_enter.png");
     }
+
 .helpbar-item-revff {
     padding-left: 56px;
     background-image: url("../img/icon_help/help_ff_rew.png");

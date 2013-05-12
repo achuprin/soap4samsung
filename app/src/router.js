@@ -11,10 +11,10 @@ define(deps, function(Backbone, api, exceptions, navManager, LoginState, MyShows
             Backbone.history.route(route, _.bind(function(fragment) {
                 try {
                     var args = this._extractParameters(route, fragment);
-                    callback && callback.apply(this, args);
                     this.trigger.apply(this, ['route:' + name].concat(args));
                     this.trigger('route', name, args);
                     Backbone.history.trigger('route', this, name, args);
+                    callback && callback.apply(this, args);
                 } catch (e) {
                     if (e instanceof exceptions.NotLogginedException) {
                         console.log("NotLogginedException occured");

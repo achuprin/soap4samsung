@@ -30,7 +30,7 @@ define(function() {
             }
             this.current = view.firstChild();
             setTimeout(function(){
-                self.current.$el.focus();
+                self.current.focus();
             }, 0)
         },
 

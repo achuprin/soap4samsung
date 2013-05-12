@@ -10,13 +10,17 @@ define(["backbone", "api"], function(Backbone, api) {
     var TVShows = Backbone.Collection.extend({
         model: TVShow,
 
-        sync: function(method, collection, success, error) {
+        sync: function(method, collection, options) {
             api.shows.all().done(function(data) {
                 _.each(data, function(item) {
                     collection.add(
                         new TVShow(item)
                     )
                 });
+
+                if (options.success) {
+                    options.success(collection, data, options);
+                }
             });
 
             return this;
