@@ -1,9 +1,9 @@
 define(["backbone", "nav-manager", "views/app-view", "views/tv-show", "models/tv-show"], function(Backbone, NavManager, AppView, views, models) {
-    var shows = new models.Collection();
-    var view = new views.List({
-        collection: shows,
-        cols: 8
-    });
+    var shows = new models.Collection(),
+        view = new views.List({
+            collection: shows,
+            cols: 6
+        });
 
     return {
         name: "My Shows",

@@ -3,7 +3,7 @@ define(["views/common"], function(CommonViews) {
         id: "root",
         className: "root",
         header: _.template($("#template-header").html()),
-        content: $("<div/>").addClass("content"),
+        content: $("<div id='content'/>"),
 
         initialize: function() {
             CommonViews.VerticalView.prototype.initialize.call(this, arguments);

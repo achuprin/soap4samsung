@@ -64,7 +64,7 @@ define(function() {
 
             this.focus(view);
             this.selected = this.current;
-            this.selected.onClick(event);
+            this.selected.select(event);
         }
     };
 

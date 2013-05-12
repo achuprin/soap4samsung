@@ -90,7 +90,7 @@ define(["backbone", "../nav-manager"], function(Backbone, navManager) {
             this.$el.removeClass("selected");
         },
 
-        onClick: function(event) {
+        select: function(event) {
             this.$el.addClass("selected");
         },
 

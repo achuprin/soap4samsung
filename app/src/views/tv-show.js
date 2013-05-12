@@ -10,7 +10,8 @@ define(["backbone", "views/common"], function(Backbone, Views) {
 
         render: function() {
             var tmplVars = _.extend(this.model.attributes, {
-                "coverBig": this.model.get('coverBig')
+                "coverBig": this.model.get('coverBig'),
+                "name": this.model.get('title')
             });
 
             this.$el.html(this.template(tmplVars));
@@ -19,19 +20,22 @@ define(["backbone", "views/common"], function(Backbone, Views) {
     });
 
     var TVShowsList = Views.GridView.extend({
-        tagName: "ul",
-        className: "tvshow-list",
+        tagName: "div",
+        className: "shows-list",
+        container: this.$el,
 
         initialize: function() {
             Views.CompositeView.prototype.initialize.call(this, arguments);
             this.collection.on('add', this.add, this);
+            this.container = $('<ul/>');
+            this.$el.append(this.container);
         },
 
         add: function(item) {
             var li = $("<li class='tvshow-card-w'/>");
             var card = new TVShowCard({model: item});
             card.setElement(li).render();
-            this.$el.append(li);
+            this.container.append(li);
 
             this.insert(card);
         },

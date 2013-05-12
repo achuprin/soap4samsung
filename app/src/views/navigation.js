@@ -14,9 +14,9 @@ define(["backbone", "views/common", "router", "nav-manager"], function(Backbone,
             })
         },
 
-        onClick: function(event) {
+        select: function(event) {
             console.log("Nav item clicked", this);
-            CommonViews.CompositeView.prototype.onClick.apply(this, arguments);
+            CommonViews.CompositeView.prototype.select.apply(this, arguments);
             router.navigate(this.options.url, {trigger: true});
         },
 
