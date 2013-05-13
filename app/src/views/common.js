@@ -107,6 +107,8 @@ define(["backbone", "../nav-manager"], function(Backbone, navManager) {
             _.each(this.children, function(child) {
                 child.remove()
             });
+            this.parent.children = _.without(this.parent.children, this);
+            this.$el.remove();
         }
     });
 
@@ -137,7 +139,7 @@ define(["backbone", "../nav-manager"], function(Backbone, navManager) {
                         currentCol = nodes.length % cols;
 
                     upperNode.connect(direction.BOTTOM, newNode);
-                    newNode.connect(direction.BOTTOM, nodes[currentCol]);
+                    // newNode.connect(direction.BOTTOM, nodes[currentCol]);
                 }
             }
         })

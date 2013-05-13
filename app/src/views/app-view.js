@@ -1,8 +1,21 @@
 define(["views/common"], function(CommonViews) {
+    var Header = CommonViews.CompositeView.extend({
+        setNavigation: function(navView) {
+            $(".header-content", this.$el).html(navView.render().$el);
+            this.insert(navView);
+            return this;
+        },
+
+        render: function() {
+            this.$el.html(_.template($("#template-header").html()));
+            return this;
+        }
+    });
+
     var AppView = CommonViews.VerticalView.extend({
         id: "root",
         className: "root",
-        header: _.template($("#template-header").html()),
+        header: new Header(),
         content: new CommonViews.VerticalView({
             id: 'content',
             className: 'content'
@@ -10,12 +23,14 @@ define(["views/common"], function(CommonViews) {
 
         initialize: function() {
             CommonViews.VerticalView.prototype.initialize.call(this, arguments);
-            console.log("Initialize AppView");
+            this.insert(this.header);
+            this.insert(this.content);
+            console.log("Initialized AppView");
         },
 
-        setHeader: function(view) {
-            $(".header-content").html(view.render().$el);
-            this.insert(view);
+        setNavigation: function(view) {
+            this.header.setNavigation(view);
+            return this;
         },
 
         setContent: function(view) {
@@ -24,7 +39,9 @@ define(["views/common"], function(CommonViews) {
         },
 
         render: function() {
-            this.$el.append(this.header()).append(this.content.render().$el);
+            this.$el
+                .append(this.header.render().$el)
+                .append(this.content.render().$el);
             return this;
         }
     });

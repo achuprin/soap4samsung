@@ -1,7 +1,7 @@
 define(["backbone", "api", "views/common", "nav-manager"], function(Backbone, api, common, navManager) {
     var SubmitButton = common.CompositeView.extend({
-        onClick: function() {
-            common.CompositeView.prototype.onClick.call(this, arguments);
+        select: function() {
+            common.CompositeView.prototype.select.call(this, arguments);
             this.$el.parents('.modal').find('form').submit();
         }
     });

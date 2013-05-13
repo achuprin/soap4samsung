@@ -16,7 +16,7 @@ define(["views", "api", "exceptions", "router"], function(views, api, exceptions
             var appView = this.view = views.App;
 
             body.html(appView.render().$el);
-            appView.setHeader(createNavigation());
+            appView.setNavigation(createNavigation());
 
             // Показываем главный раздел "Мои сериалы"
             router.navigate(router.routes.my, {trigger: true});

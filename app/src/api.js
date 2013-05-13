@@ -51,6 +51,7 @@ define(["platform", "exceptions"], function(platform, exceptions) {
         user: {
             uri: endpoint + "/login",
             login: function(username, password) {
+                console.log('API: loggining inвА¶');
                 var now = new Date().getTime();
                 var expirationTime = parseFloat(storage.get(SESSION_EXPIRATION_KEY));
 

@@ -14,10 +14,11 @@ require.config({
     }
 });
 
-require(["jquery", "backbone", "app"], function($, Backbone, app) {
+require(["jquery", "backbone", "app", 'debugger'], function($, Backbone, app, debug) {
     $(function() {
         Backbone.history.start();
         app.start();
+        debug.init();
     });
 
     return app;
