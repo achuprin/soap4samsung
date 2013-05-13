@@ -133,12 +133,20 @@ html, body {
     padding: 5px 0 0 0;
     font-size: 0.9em;
     text-align: center;
-    color: #000;
     text-shadow: 0 1px 0 #ffffff;
     }
 
-.shows-list .new {
+.tvshow-card {
+    color: #000;
+    }
+
+.tvshow-card .new {
     position: absolute;
+    top: 0;
+    right: 0;
+    background: #000;
+    color: #fff;
+    padding: 10px;
     }
 
 /* Footer (controls) */

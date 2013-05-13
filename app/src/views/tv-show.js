@@ -9,12 +9,7 @@ define(["backbone", "views/common"], function(Backbone, Views) {
         },
 
         render: function() {
-            var tmplVars = _.extend(this.model.attributes, {
-                "coverBig": this.model.get('coverBig'),
-                "name": this.model.get('title')
-            });
-
-            this.$el.html(this.template(tmplVars));
+            this.$el.html(this.template(this.model.attributes));
             return this;
         }
     });

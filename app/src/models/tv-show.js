@@ -26,8 +26,21 @@ define(["backbone", "api"], function(Backbone, api) {
             return this;
         },
 
-        success: function() {
-            console.log("onsuccess");
+        favorites: function(options) {
+            var collection = this;
+            api.shows.favorites().done(function(data) {
+                _.each(data, function(item) {
+                    collection.add(
+                        new TVShow(item)
+                    )
+                });
+
+                if (options.success) {
+                    options.success(collection, data, options);
+                }
+            });
+
+            return this;
         }
     });
 

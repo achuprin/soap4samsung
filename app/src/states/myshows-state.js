@@ -10,7 +10,7 @@ define(["backbone", "nav-manager", "views/app-view", "views/tv-show", "models/tv
         show: function() {
             console.log("Showing #my");
             AppView.setContent(view);
-            shows.fetch({
+            shows.favorites({
                 success: function() {
                     NavManager.focus(view);
                 }
