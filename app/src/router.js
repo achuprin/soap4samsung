@@ -1,5 +1,5 @@
-var deps = ["backbone", "api", "exceptions", "nav-manager", "states/login-state", "states/myshows-state"];
-define(deps, function(Backbone, api, exceptions, navManager, LoginState, MyShowsState) {
+var deps = ["backbone", "api", "exceptions", "nav-manager", "states/login-state", "states/myshows-state", "states/allshows-state"];
+define(deps, function(Backbone, api, exceptions, navManager, LoginState, MyShowsState, AllShowsState) {
     _.extend(Backbone.Router.prototype, {
         /**
          * Переопределен метод навигации, чтобы отлавливать исключение и редиректить на логин-стейт.
@@ -39,6 +39,10 @@ define(deps, function(Backbone, api, exceptions, navManager, LoginState, MyShows
 
         my: function() {
             changeState(MyShowsState);
+        },
+
+        all: function() {
+            changeState(AllShowsState);
         },
 
         login: function() {
