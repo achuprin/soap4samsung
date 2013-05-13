@@ -3,7 +3,10 @@ define(["views/common"], function(CommonViews) {
         id: "root",
         className: "root",
         header: _.template($("#template-header").html()),
-        content: $("<div id='content'/>"),
+        content: new CommonViews.VerticalView({
+            id: 'content',
+            className: 'content'
+        }),
 
         initialize: function() {
             CommonViews.VerticalView.prototype.initialize.call(this, arguments);
@@ -16,12 +19,12 @@ define(["views/common"], function(CommonViews) {
         },
 
         setContent: function(view) {
-            this.content.html(view.render().$el);
-            this.insert(view);
+            this.content.html(view);
+            return this;
         },
 
         render: function() {
-            this.$el.append(this.header()).append(this.content);
+            this.$el.append(this.header()).append(this.content.render().$el);
             return this;
         }
     });

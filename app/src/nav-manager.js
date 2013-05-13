@@ -24,34 +24,51 @@ define(function() {
 
     Manager.prototype = {
         focus: function(view) {
-            var self = this;
+            var parent = view,
+                firstChild = view.firstChild();
+
             if (this.current) {
                 this.current.blur();
             }
-            this.current = view.firstChild();
+            this.current = firstChild;
+
             setTimeout(function(){
-                self.current.focus();
+                // TODO: Оптимизировать это
+                firstChild.focus();
+                while (parent) {
+                    var deltaTop = firstChild.$el.offset().top - (parent.$el.offset().top) - parseInt(parent.$el.css('paddingTop'), 10),
+                        deltaRight = (parent.$el.offset().left + parent.$el.width()) - (firstChild.$el.offset().left + firstChild.$el.width()),
+                        deltaBottom = (parent.$el.offset().top + parent.$el.height()) - (firstChild.$el.offset().top + firstChild.$el.height()),
+                        deltaLeft = firstChild.$el.offset().left - (parent.$el.offset().left) - parseInt(parent.$el.css('paddingLeft'), 10);
+
+                    if (deltaTop < 0) {
+                        parent.$el.scrollTop(parent.$el.scrollTop() + deltaTop);
+                    } else if (deltaBottom < 0) {
+                        parent.$el.scrollTop(parent.$el.scrollTop() - deltaBottom);
+                    } else if (deltaLeft < 0) {
+                        parent.$el.scrollLeft(parent.$el.scrollLeft() + deltaLeft);
+                    } else if (deltaRight < 0) {
+                        parent.$el.scrollLeft(parent.$el.scrollLeft() - deltaRight);
+                    }
+
+                    parent = parent.parent;
+                }
             }, 0)
         },
 
-        move: function(event) {
-            var self = this;
-            function next(event) {
-                switch (event.keyCode) {
-                    case 37:
-                        return self.current.sibling(0);
-                    case 38:
-                        return self.current.sibling(1);
-                    case 39:
-                        return self.current.sibling(2);
-                    case 40:
-                        return self.current.sibling(3);
-                    default:
-                        return null;
-                }
-            }
+        /**
+         *
+         * @param event событие нажатия клавиши
+         * @return 0 - вверх, 1 - вправо, 2 - вниз, 3 - влево.
+         */
+        direction: function(event) {
+            return event.keyCode - 37;
+        },
 
-            var nextNode = next(event);
+        move: function(event) {
+            var direction = this.direction(event),
+                nextNode = this.current.sibling(direction);
+
             if (nextNode) {
                 this.focus(nextNode);
             }

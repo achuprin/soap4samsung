@@ -35,9 +35,15 @@ define(["backbone", "../nav-manager"], function(Backbone, navManager) {
             return this;
         },
 
+        /**
+         * "Соединяет" элемент @param view c текущим элементом с указанной стороны.
+         * @param direction сторона, с которой присоединять новый элемент к текущему.
+         * @param view
+         * @return {*}
+         */
         connect: function(direction, view) {
-            var oppositeDirection = direction - 2;
-            var sibling = this.siblings[direction];
+            var oppositeDirection = direction + ((direction < 2 ? 1 : -1) * 2),
+                sibling = this.siblings[direction];
 
             if (sibling) {
                 sibling.siblings[oppositeDirection] = view;
@@ -59,6 +65,7 @@ define(["backbone", "../nav-manager"], function(Backbone, navManager) {
         },
 
         html: function(view) {
+            this.children = [];
             this.insert(view);
             this.$el.html(view.render().$el);
         },
@@ -117,16 +124,20 @@ define(["backbone", "../nav-manager"], function(Backbone, navManager) {
 
         "GridView": View.extend({
             connectionStrategy: function(nodes, newNode) {
-                var lastNode = nodes[nodes.length - 1];
-                var cols = this.options.cols;
+                var lastNode = nodes[nodes.length - 1],
+                    cols = this.options.cols;
 
                 if (lastNode) {
-                    lastNode.connect(2, newNode);
+                    lastNode.connect(direction.RIGHT, newNode);
+                    nodes[0].connect(direction.LEFT, newNode);
                 }
 
                 if (nodes.length >= cols) {
-                    var upperNode = nodes[nodes.length - cols];
-                    upperNode.connect(3, newNode);
+                    var upperNode = nodes[nodes.length - cols],
+                        currentCol = nodes.length % cols;
+
+                    upperNode.connect(direction.BOTTOM, newNode);
+                    newNode.connect(direction.BOTTOM, nodes[currentCol]);
                 }
             }
         })
