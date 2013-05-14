@@ -6,8 +6,12 @@ define(deps, function(Backbone, api, exceptions, navManager, LoginState, MyShows
          */
         route: function(route, name, callback) {
             var self = this;
-            if (!_.isRegExp(route)) route = this._routeToRegExp(route);
-            if (!callback) callback = this[name];
+            if (!_.isRegExp(route)) {
+                route = this._routeToRegExp(route);
+            }
+            if (!callback) {
+                callback = this[name];
+            }
             Backbone.history.route(route, _.bind(function(fragment) {
                 try {
                     var args = this._extractParameters(route, fragment);
@@ -28,28 +32,28 @@ define(deps, function(Backbone, api, exceptions, navManager, LoginState, MyShows
         }
     });
 
-    var currentState;
-    var Router = Backbone.Router.extend({
-        routes: {
-            "my": "my",
-            "all": "all",
-            "settings": "settings",
-            "login": "login"
-        },
+    var currentState,
+        Router = Backbone.Router.extend({
+            routes: {
+                "my": "my",
+                "all": "all",
+                "settings": "settings",
+                "login": "login"
+            },
 
-        my: function() {
-            changeState(MyShowsState);
-        },
+            my: function() {
+                changeState(MyShowsState);
+            },
 
-        all: function() {
-            changeState(AllShowsState);
-        },
+            all: function() {
+                changeState(AllShowsState);
+            },
 
-        login: function() {
-            changeState(LoginState);
-        }
-    });
-    var router = new Router();
+            login: function() {
+                changeState(LoginState);
+            }
+        }),
+        router = new Router();
 
     function changeState(newState) {
         console.log("Changing state: current is", currentState, newState);
@@ -59,5 +63,6 @@ define(deps, function(Backbone, api, exceptions, navManager, LoginState, MyShows
         newState.show();
         currentState = newState;
     }
+
     return router;
 });

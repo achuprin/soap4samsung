@@ -13,8 +13,15 @@ define(["views", "api", "exceptions", "router"], function(views, api, exceptions
             body.html(appView.render().$el);
             appView.setNavigation(navBar);
 
-            // Показываем главный раздел "Мои сериалы"
-            router.navigate(router.routes.my, {trigger: true});
+            api.shows.favorites().done(function(data) {
+                if (data.length !== 0) {
+                    // Показываем главный раздел "Мои сериалы"
+                    router.navigate(router.routes.my, {trigger: true});
+                } else {
+                    // Показываем главный раздел "Все сериалы"
+                    router.navigate(router.routes.all, {trigger: true});
+                }
+            });
         }
     };
 });
