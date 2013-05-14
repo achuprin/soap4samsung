@@ -1,4 +1,4 @@
-define(['jquery', "views/app-view"], function($, AppView) {
+define(['jquery', "views/app-view", "nav-manager"], function($, AppView, NavManager) {
     /*
      * jQuery Hotkeys Plugin
      * Copyright 2010, John Resig
@@ -112,6 +112,11 @@ define(['jquery', "views/app-view"], function($, AppView) {
 
     return {
         init: function() {
+            $(document).bind('keyup', 'ctrl+s', function() {
+                console.log('selected: ', NavManager.selected);
+                console.log('focused:', NavManager.current);
+            });
+
             $(document).bind('keyup', 'ctrl+d', function() {
                 var deepLevel = 0,
                     inspect = function(root) {

@@ -1,22 +1,17 @@
 define(["views", "api", "exceptions", "router"], function(views, api, exceptions, router) {
-    var body = $("body");
+    var body = $("body"),
+        navBar = new views.navigation.Navigation();
 
-    function createNavigation() {
-        var navBar = new views.navigation.Navigation();
-
-        navBar.add(router.routes.my, "Мои сериалы")
-            .add(router.routes.all, "Все сериалы");
-            // .add(router.routes.settings, "Настройки");
-
-        return navBar;
-    }
+    navBar.add(router.routes.my, "Мои сериалы")
+        .add(router.routes.all, "Все сериалы");
+        // .add(router.routes.settings, "Настройки");
 
     return {
         start: function() {
             var appView = this.view = views.App;
 
             body.html(appView.render().$el);
-            appView.setNavigation(createNavigation());
+            appView.setNavigation(navBar);
 
             // Показываем главный раздел "Мои сериалы"
             router.navigate(router.routes.my, {trigger: true});

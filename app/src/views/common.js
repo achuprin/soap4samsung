@@ -87,18 +87,22 @@ define(["backbone", "../nav-manager"], function(Backbone, navManager) {
 
         focus: function() {
             this.$el.addClass("active").focus();
+            return this;
         },
 
         blur: function() {
             this.$el.removeClass("active").blur();
+            return this;
         },
 
         unselect: function() {
             this.$el.removeClass("selected");
+            return this;
         },
 
         select: function(event) {
             this.$el.addClass("selected");
+            return this;
         },
 
         remove: function() {

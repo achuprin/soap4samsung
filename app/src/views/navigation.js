@@ -35,6 +35,12 @@ define(["backbone", "views/common", "router", "nav-manager"], function(Backbone,
             }));
         },
 
+        getItem: function(url) {
+            return _.find(this.children, function(child) {
+                return child.options.url === url;
+            })
+        },
+
         render: function() {
             var ul = $("<ul class='nav'/>");
             _.each(this.children, function(child) {

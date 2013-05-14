@@ -29,8 +29,13 @@ define(["views/common"], function(CommonViews) {
         },
 
         setNavigation: function(view) {
+            this.navigation = view;
             this.header.setNavigation(view);
             return this;
+        },
+
+        getNavigation: function() {
+            return this.navigation;
         },
 
         setContent: function(view) {

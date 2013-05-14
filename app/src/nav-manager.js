@@ -24,17 +24,19 @@ define(function() {
 
     Manager.prototype = {
         focus: function(view) {
-            var parent = view,
-                firstChild = view.firstChild();
-
-            if (this.current) {
-                this.current.blur();
-            }
-            this.current = firstChild;
+            var self = this,
+                parent = view,
+                firstChild = view.firstChild(),
+                defer = $.Deferred();
 
             setTimeout(function(){
                 // TODO: Оптимизировать это
-                firstChild.focus();
+                if (self.current) {
+                    self.current.blur();
+                }
+
+                self.current = firstChild.focus();
+
                 while (parent) {
                     var deltaTop = firstChild.$el.offset().top - (parent.$el.offset().top) - parseInt(parent.$el.css('paddingTop'), 10),
                         deltaRight = (parent.$el.offset().left + parent.$el.width()) - (firstChild.$el.offset().left + firstChild.$el.width()),
@@ -52,8 +54,11 @@ define(function() {
                     }
 
                     parent = parent.parent;
+                    defer.resolve();
                 }
-            }, 0)
+            }, 0);
+
+            return defer;
         },
 
         /**
@@ -75,13 +80,15 @@ define(function() {
         },
 
         select: function(view) {
-            if (this.selected) {
-                this.selected.unselect();
-            }
+            var self = this;
+            this.focus(view).done(function() {
+                if (self.selected) {
+                    self.selected.unselect();
+                }
 
-            this.focus(view);
-            this.selected = this.current;
-            this.selected.select(event);
+                self.selected = self.current;
+                self.selected.select(event);
+            });
         }
     };
 

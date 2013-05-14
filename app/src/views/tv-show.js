@@ -23,15 +23,15 @@ define(["backbone", "views/common"], function(Backbone, Views) {
         container: this.$el,
 
         defaults: {
-            emptyText: $(),
-            progressText: $('#progress-text')
+            emptyText: '',
+            progressText: $('#progress-text').html()
         },
 
         initialize: function() {
             Views.CompositeView.prototype.initialize.call(this, arguments);
             this.options = _.extend(this.defaults, this.options);
-            this.emptyText = _.template(this.options.emptyText.html());
-            this.progressText = _.template(this.options.progressText.html());
+            this.emptyText = _.template(this.options.emptyText);
+            this.progressText = _.template(this.options.progressText);
             this.collection
                 .on('add', this.add, this)
                 .on('beforeLoad', this.beforeLoad, this)
