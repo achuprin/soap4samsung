@@ -11,6 +11,7 @@ define(["backbone", "api"], function(Backbone, api) {
         model: TVShow,
 
         sync: function(method, collection, options) {
+            this.trigger('beforeLoad');
             api.shows.all().done(function(data) {
                 _.each(data, function(item) {
                     collection.add(
@@ -19,6 +20,7 @@ define(["backbone", "api"], function(Backbone, api) {
                 });
 
                 if (options.success) {
+                    collection.trigger('sync');
                     options.success(collection, data, options);
                 }
             });
@@ -28,6 +30,7 @@ define(["backbone", "api"], function(Backbone, api) {
 
         favorites: function(options) {
             var collection = this;
+            this.trigger('beforeLoad');
             api.shows.favorites().done(function(data) {
                 _.each(data, function(item) {
                     collection.add(
@@ -36,6 +39,7 @@ define(["backbone", "api"], function(Backbone, api) {
                 });
 
                 if (options.success) {
+                    collection.trigger('sync');
                     options.success(collection, data, options);
                 }
             });

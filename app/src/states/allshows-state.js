@@ -11,8 +11,10 @@ define(["backbone", "nav-manager", "views/app-view", "views/tv-show", "models/tv
             console.log("Showing #all");
             AppView.setContent(view);
             shows.fetch({
-                success: function() {
-                    NavManager.focus(view);
+                success: function(collection, data, options) {
+                    if (data.length !== 0) {
+                        NavManager.focus(view);
+                    }
                 }
             });
 

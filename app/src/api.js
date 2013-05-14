@@ -88,9 +88,9 @@ define(["platform", "exceptions"], function(platform, exceptions) {
                 return $.getJSON(this.allShowsUri);
             }),
 
-            favorites: function() {
+            favorites: login(function() {
                 return $.getJSON(this.favoritedShowsUri);
-            }
+            })
         }
     };
 

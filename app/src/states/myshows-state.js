@@ -2,7 +2,8 @@ define(["backbone", "nav-manager", "views/app-view", "views/tv-show", "models/tv
     var shows = new models.Collection(),
         view = new views.List({
             collection: shows,
-            cols: 6
+            cols: 6,
+            emptyText: $('#myshows-empty-text')
         });
 
     return {
@@ -11,8 +12,10 @@ define(["backbone", "nav-manager", "views/app-view", "views/tv-show", "models/tv
             console.log("Showing #my");
             AppView.setContent(view);
             shows.favorites({
-                success: function() {
-                    NavManager.focus(view);
+                success: function(collection, data, options) {
+                    if (data.length !== 0) {
+                        NavManager.focus(view);
+                    }
                 }
             });
 

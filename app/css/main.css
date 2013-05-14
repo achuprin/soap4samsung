@@ -83,16 +83,16 @@ html, body {
     margin: 20px;
     }
 
-.shows-list {
+.shows-list-w {
     padding: 10px;
     }
 
-.shows-list ul {
+.shows-list-w ul {
     margin: -20px -20px 0 -30px;
     overflow: hidden;
     }
 
-.shows-list ul li {
+.shows-list-w ul li {
     position: relative;
     list-style: none;
     float: left;
@@ -100,32 +100,32 @@ html, body {
     width: 190px;
     }
 
-.shows-list ul li a {
+.shows-list-w ul li a {
     display: block;
     }
 
-.shows-list ul li.active a, .shows-list ul li:hover a {
+.shows-list-w ul li.active a, .shows-list-w ul li:hover a {
     /*margin: -10px;*/
     /*padding: 10px;*/
     /*background: #000;*/
     /*box-shadow: 0px 2px 11px rgba(82, 168, 236, 1);*/
     }
 
-.shows-list ul li a:hover {
+.shows-list-w ul li a:hover {
     text-decoration: none;
     }
 
-.shows-list ul li .poster {
+.shows-list-w ul li .poster {
     width: 100%;
     height: 190px;
     box-shadow: rgba(0, 0, 0, 0.4) 0 1px 5px;
     }
 
-.shows-list ul li:hover .poster, .shows-list ul li.active .poster {
+.shows-list-w ul li:hover .poster, .shows-list-w ul li.active .poster {
     box-shadow: 0px 2px 11px red;
     }
 
-.shows-list .name {
+.shows-list-w .name {
     display: block;
     white-space: nowrap;
     width: 100%;
@@ -147,6 +147,49 @@ html, body {
     background: #000;
     color: #fff;
     padding: 10px;
+    }
+
+.shows-list-w {
+    position: relative;
+    }
+
+.view-blank-text {
+    display: none;
+    position: absolute;
+    left: 100px;
+    right: 100px;
+    top: 0;
+    bottom: 0;
+    color: #333;
+    text-shadow: 0 1px 0 #ffffff;
+    font-size: 42px;
+    text-align: center;
+    height:380px;
+    padding-top: 200px;
+    line-height: 1em;
+    }
+
+.view-blank-text .secondary {
+    margin: 0 40px;
+    color: #777;
+    font-size: 24px;
+    line-height: 1em;
+    }
+
+.shows-list-empty .shows-list {
+    display: none;
+    }
+
+.shows-list-empty .shows-list-empty-text {
+    display: block;
+    }
+
+.shows-list-progress .shows-list-progress-text {
+    display: block;
+    }
+
+.shows-list-empty-text, .shows-list-progress .shows-list-empty-text {
+    display: none;
     }
 
 /* Footer (controls) */
